@@ -1,29 +1,33 @@
-Summary: LDAP Nameservice clients and scripts
-Name: ldapns
-Version: 0.1
-Release: 1
-Group: Networking
-Source: ftp://ftp.rage.net/pub/LDAP/ldapns-0.1.tgz
-Patch: ldapns-0.1.patch
-
-Copyright: GPL/LGPL
-Requires: gdbm
-Distribution: Hurricane
-Vendor: Raging Network Services
-Packager: Greg Retkowski <greg@rage.net>
+Summary:	LDAP Nameservice clients and scripts
+Name:		ldapns
+Version:	0.1
+Release:	1
+Group:		Networking
+Copyright:	GPL/LGPL
+Vendor:		Raging Network Services
+Source:		ftp://ftp.rage.net/pub/LDAP/ldapns-0.1.tgz
+Patch:		ldapns-0.1.patch
+Requires:	gdbm
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 LDAP nameservice clients and scripts which allow a host to participate
 in an RFC2307 compliant network nameservice scheme. 
 
-
 %prep
 %setup -n ldapns
 %patch -p1
+
 %build
 make
+
 %install
+rm -rf $RPM_BUILD_ROOT
 make install
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %doc README.PAM README.NSS ANNOUNCE.NSS pam.conf
 #%doc ANNOUNCEMENT CHANGES COPYRIGHT INSTALL README
