@@ -8,7 +8,7 @@ Vendor:		Raging Network Services
 Source:		ftp://ftp.rage.net/pub/LDAP/ldapns-0.1.tgz
 Patch:		ldapns-0.1.patch
 Requires:	gdbm
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LDAP nameservice clients and scripts which allow a host to participate
