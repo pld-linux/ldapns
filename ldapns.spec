@@ -4,10 +4,6 @@ Name:		ldapns
 Version:	0.1
 Release:	1
 Group:		Networking
-Group(de):	Netzwerkwesen
-Group(es):	Red
-Group(pl):	Sieciowe
-Group(pt_BR):	Rede
 License:	GPL/LGPL
 Vendor:		Raging Network Services
 Source0:	ftp://ftp.rage.net/pub/LDAP/%{name}-%{version}.tgz
