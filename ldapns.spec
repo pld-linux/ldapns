@@ -3,19 +3,20 @@ Name:		ldapns
 Version:	0.1
 Release:	1
 Group:		Networking
-Copyright:	GPL/LGPL
+Group(pl):	Sieciowe
+License:	GPL/LGPL
 Vendor:		Raging Network Services
-Source:		ftp://ftp.rage.net/pub/LDAP/ldapns-0.1.tgz
-Patch:		ldapns-0.1.patch
+Source0:	ftp://ftp.rage.net/pub/LDAP/%{name}-%{version}.tgz
+Patch0:		ldapns-0.1.patch
 Requires:	gdbm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LDAP nameservice clients and scripts which allow a host to participate
-in an RFC2307 compliant network nameservice scheme. 
+in an RFC2307 compliant network nameservice scheme.
 
 %prep
-%setup -n ldapns
+%setup -q -n ldapns
 %patch -p1
 
 %build
@@ -25,17 +26,23 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install
 
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{58}/*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldcongif
+%postun -p /sbin/ldcongif
+
 %files
+%defattr(644,root,root,755)
 %doc README.PAM README.NSS ANNOUNCE.NSS pam.conf
 #%doc ANNOUNCEMENT CHANGES COPYRIGHT INSTALL README
 #%doc doc/guides/guide.pdf doc/guides/guide.ps.Z doc/rfc/rfc*
-%config /etc/ldap/ldap.conf
-%config /etc/ldap/ldap.sec
-%config /etc/nsswitch.ldap
-%config /etc/pam.conf.ldap
+%config %{_sysconfdir}/ldap/ldap.conf
+%config %{_sysconfdir}/ldap/ldap.sec
+%config %{_sysconfdir}/nsswitch.ldap
+%config %{_sysconfdir}/pam.conf.ldap
 /etc/pam.d.ldap/chfn
 /etc/pam.d.ldap/chsh
 /etc/pam.d.ldap/imap
@@ -52,12 +59,12 @@ rm -rf $RPM_BUILD_ROOT
 /etc/pam.d.ldap/su
 /etc/pam.d.ldap/xdm
 
-/usr/sbin/ldapinit
-/usr/sbin/ldapmigrate
-/lib/security/pam_ldap.so
-/lib/libnss_ldap.so.1
-/usr/man/man5/ldap.conf.5
-/usr/man/man8/ldapmigrate.8
-/usr/man/man8/ldapinit.8
-/usr/man/man8/nss_ldap.8
-/usr/man/man8/pam_ldap.8
+%attr(755,root,root) %{_sbindir}/ldapinit
+%attr(755,root,root) %{_sbindir}/ldapmigrate
+%attr(755,root,root) /lib/security/pam_ldap.so
+%attr(755,root,root) /lib/libnss_ldap.so.1
+%{_mandir}/man5/ldap.conf.5*
+%{_mandir}/man8/ldapmigrate.8*
+%{_mandir}/man8/ldapinit.8*
+%{_mandir}/man8/nss_ldap.8*
+%{_mandir}/man8/pam_ldap.8*
