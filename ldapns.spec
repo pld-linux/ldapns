@@ -1,19 +1,27 @@
 Summary:	LDAP Nameservice clients and scripts
+Summary(pl):	Klienci i skrypty LDAP Nameservice
 Name:		ldapns
 Version:	0.1
 Release:	1
 Group:		Networking
+Group(de):	Netzwerkwesen
+Group(es):	Red
 Group(pl):	Sieciowe
+Group(pt_BR):	Rede
 License:	GPL/LGPL
 Vendor:		Raging Network Services
 Source0:	ftp://ftp.rage.net/pub/LDAP/%{name}-%{version}.tgz
-Patch0:		ldapns-0.1.patch
+Patch0:		%{name}-0.1.patch
 Requires:	gdbm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LDAP nameservice clients and scripts which allow a host to participate
 in an RFC2307 compliant network nameservice scheme.
+
+%description -l pl
+Klienci i skrypty do serwisu nazw (Nameservice) LDAP pozwalaj±ce
+uczestniczyæ w sieci zgodnej z RFC2307.
 
 %prep
 %setup -q -n ldapns
@@ -26,7 +34,7 @@ in an RFC2307 compliant network nameservice scheme.
 rm -rf $RPM_BUILD_ROOT
 %{__make} install
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{58}/*
+gzip -9nf README.PAM README.NSS ANNOUNCE.NSS
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -36,7 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.PAM README.NSS ANNOUNCE.NSS pam.conf
+%doc {README.PAM,README.NSS,ANNOUNCE.NSS}.gz pam.conf
 #%doc ANNOUNCEMENT CHANGES COPYRIGHT INSTALL README
 #%doc doc/guides/guide.pdf doc/guides/guide.ps.Z doc/rfc/rfc*
 %config %{_sysconfdir}/ldap/ldap.conf
