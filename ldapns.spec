@@ -30,8 +30,6 @@ uczestniczyæ w sieci zgodnej z RFC2307.
 rm -rf $RPM_BUILD_ROOT
 %{__make} install
 
-gzip -9nf README.PAM README.NSS ANNOUNCE.NSS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -40,7 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README.PAM,README.NSS,ANNOUNCE.NSS}.gz pam.conf
+%doc README.PAM README.NSS ANNOUNCE.NSS pam.conf
 #%doc ANNOUNCEMENT CHANGES COPYRIGHT INSTALL README
 #%doc doc/guides/guide.pdf doc/guides/guide.ps.Z doc/rfc/rfc*
 %config %{_sysconfdir}/ldap/ldap.conf
