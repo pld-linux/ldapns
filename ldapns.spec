@@ -28,6 +28,7 @@ uczestniczyæ w sieci zgodnej z RFC2307.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install
 
 %clean
@@ -63,8 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) %{_sbindir}/ldapinit
 %attr(755,root,root) %{_sbindir}/ldapmigrate
-%attr(755,root,root) /lib/security/pam_ldap.so
-%attr(755,root,root) /lib/libnss_ldap.so.1
+%attr(755,root,root) /%{_lib}/security/pam_ldap.so
+%attr(755,root,root) /%{_lib}/libnss_ldap.so.1
 %{_mandir}/man5/ldap.conf.5*
 %{_mandir}/man8/ldapmigrate.8*
 %{_mandir}/man8/ldapinit.8*
