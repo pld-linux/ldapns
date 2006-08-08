@@ -21,7 +21,7 @@ uczestniczyæ w sieci zgodnej z RFC2307.
 
 %prep
 %setup -q -n ldapns
-%patch -p1
+%patch0 -p1
 
 %build
 %{__make}
