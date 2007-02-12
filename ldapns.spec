@@ -1,5 +1,5 @@
 Summary:	LDAP Nameservice clients and scripts
-Summary(pl):	Klienci i skrypty LDAP Nameservice
+Summary(pl.UTF-8):   Klienci i skrypty LDAP Nameservice
 Name:		ldapns
 Version:	0.1
 Release:	1
@@ -15,9 +15,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 LDAP nameservice clients and scripts which allow a host to participate
 in an RFC2307 compliant network nameservice scheme.
 
-%description -l pl
-Klienci i skrypty do serwisu nazw (Nameservice) LDAP pozwalaj±ce
-uczestniczyæ w sieci zgodnej z RFC2307.
+%description -l pl.UTF-8
+Klienci i skrypty do serwisu nazw (Nameservice) LDAP pozwalajÄ…ce
+uczestniczyÄ‡ w sieci zgodnej z RFC2307.
 
 %prep
 %setup -q -n ldapns
