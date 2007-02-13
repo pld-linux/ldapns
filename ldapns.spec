@@ -1,5 +1,5 @@
 Summary:	LDAP Nameservice clients and scripts
-Summary(pl.UTF-8):   Klienci i skrypty LDAP Nameservice
+Summary(pl.UTF-8):	Klienci i skrypty LDAP Nameservice
 Name:		ldapns
 Version:	0.1
 Release:	1
